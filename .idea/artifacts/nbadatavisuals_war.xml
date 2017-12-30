@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="nbadatavisuals:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="nba-data-visuals-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="nbadatavisuals:war exploded" />
+    </root>
+  </artifact>
+</component>
