@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomePageController {
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String home(@RequestParam(value="name", required=false, defaultValue="Not Found") String name, Model model) {
-        Player player = (Player)DomainObject.getBy(Player.class, "name", name);
+    public String home(Model model) {
+        Player player = (Player)Player.getWhere(Player.class, " player_name = 'James Harden'"  ).get(0);
         model.addAttribute("name", player.getName());
         return "home";
     }

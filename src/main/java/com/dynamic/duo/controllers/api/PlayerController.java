@@ -12,7 +12,7 @@ public class PlayerController {
 
     @GetMapping("/player/{name}")
     public ResponseEntity getPlayerByName(@PathVariable("name") String name) {
-        Player player = (Player)DomainObject.getBy(Player.class, "name", name);
+        Player player = (Player)DomainObject.getBy(Player.class, "player_name", name);
         return ResponseEntity.ok().body(player);
     }
 }
