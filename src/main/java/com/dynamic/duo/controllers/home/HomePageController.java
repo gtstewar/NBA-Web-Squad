@@ -1,6 +1,5 @@
 package com.dynamic.duo.controllers.home;
 
-import com.dynamic.duo.model.persistent.DomainObject;
 import com.dynamic.duo.model.persistent.Player;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
