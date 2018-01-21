@@ -9,6 +9,8 @@ import com.dynamic.duo.utils.HibernateUtil;
 import org.hibernate.Session;
 import com.dynamic.duo.utils.DomainObjectCache;
 
+import javax.persistence.Table;
+
 
 /**
  * The common super-class for all database entities. This is done to centralize
@@ -60,7 +62,6 @@ public abstract class DomainObject <D extends DomainObject<D>> {
     public static List< ? extends DomainObject> getWhere ( final Class table, final String whereClause ) {
         final Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        System.out.println("Select from " + table.getSimpleName() + " " + " where " + whereClause );
         final List< ? extends DomainObject> requests = session
                 .createQuery( "FROM " + table.getSimpleName() + " WHERE " + whereClause ).list();
         session.getTransaction().commit();

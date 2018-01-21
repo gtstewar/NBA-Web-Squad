@@ -1,22 +1,24 @@
 package com.dynamic.duo.model.persistent;
 
 import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table( name = "players" )
-public class Player extends DomainObject implements Serializable {
-    @Id
-    @Column
-    private Long player_id;
+@Table(name = "players", schema = "nba")
+public class Player extends DomainObject<Player> implements Serializable {
+
     @NotEmpty
-    @Column
+    @Column(name = "player_name")
     private String player_name;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "player_id")
+    private Long player_id;
+
     public Long getId() {
-        return player_id;
+        return Long.valueOf(player_id);
     }
 
     public void setId(Long id) {

@@ -4,23 +4,7 @@
 
 <hibernate-configuration>
     <session-factory>
-
-        <!--&lt;!&ndash; SQL dialect &ndash;&gt;-->
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-
-        <!--<property name="hibernate.hbm2ddl.auto">update</property>-->
-
-        <!--&lt;!&ndash; Connection properties &ndash;&gt;-->
-        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-
-        <!--&lt;!&ndash; JDBC connection pool (use the built-in) &ndash;&gt;-->
-        <!--<property name="hibernate.connection.pool_size">10</property>-->
-
-        <!--&lt;!&ndash; Echo all executed SQL to stdout &ndash;&gt;-->
-        <!--<property name="show_sql">true</property>-->
-
         <!-- List of persistent classes -->
-        <mapping class="com.dynamic.duo.model.persistent.Players" />
-
+        <mapping class="com.dynamic.duo.model.persistent.Player" />
     </session-factory>
 </hibernate-configuration>

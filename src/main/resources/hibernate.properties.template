@@ -1,7 +1,8 @@
 # MySQL properties
+# MySQL properties
 hibernate.connection.url = jdbc:mysql://localhost:3306/nba?createDatabaseIfNotExist=true
 hibernate.connection.username = root
-hibernate.connection.password = Jarvis22!!
+hibernate.connection.password =
 
 # Hibernate properties
 hibernate.show_sql=true
