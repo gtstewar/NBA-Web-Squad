@@ -41,6 +41,9 @@
           <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.2" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-validator:5.2.1.Final" />
           <element id="library" level="project" name="Maven: javax.validation:validation-api:1.1.0.Final" />
+          <element id="library" level="project" name="Maven: org.junit.jupiter:junit-jupiter-api:5.1.0-M1" />
+          <element id="library" level="project" name="Maven: org.opentest4j:opentest4j:1.0.0" />
+          <element id="library" level="project" name="Maven: org.junit.platform:junit-platform-commons:1.1.0-M1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
