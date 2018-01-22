@@ -53,7 +53,6 @@ public class PlayerGeneralStats extends DomainObject<PlayerGeneralStats> impleme
             session.getTransaction().commit();
             session.close();
             //put in cache since it wasnt in cache originally
-            cache.put(id, stats);
         } catch (Exception e) {
             //catch all exceptions
         }
