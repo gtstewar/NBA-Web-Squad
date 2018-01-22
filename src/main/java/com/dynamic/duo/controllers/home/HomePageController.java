@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class HomePageController {
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String home(@RequestParam(value="name", defaultValue="James Harden") String name , Model model) {
-        System.out.println(name);
-        Player player = (Player)Player.getWhere(Player.class, " player_name = " + "'" + name + "'"  ).get(0);
+    public String home(@RequestParam(value="id", defaultValue="1") Long id , Model model) {
+        Player player = Player.getByID(id);
+        long idret = Player.getIDFromName(player.getName());
+        System.out.println(idret);
         model.addAttribute("name", player.getName());
         return "home";
     }
