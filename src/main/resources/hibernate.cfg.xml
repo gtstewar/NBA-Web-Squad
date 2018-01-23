@@ -7,5 +7,6 @@
         <!-- List of persistent classes -->
         <mapping class="com.dynamic.duo.model.persistent.Player" />
         <mapping class="com.dynamic.duo.model.persistent.PlayerGeneralStats" />
+        <mapping class="com.dynamic.duo.model.persistent.PlayerAdvancedStats" />
     </session-factory>
 </hibernate-configuration>
