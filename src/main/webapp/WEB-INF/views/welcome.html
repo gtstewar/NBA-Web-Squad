@@ -17,12 +17,37 @@
 
     <style>
 
-        /*html { overflow-y: hidden; overflow-x: hidden;}*/
+        html { overflow-y: hidden; overflow-x: hidden;}
 
         .no-padding {
             padding-left: 0;
             padding-right: 0;
         }
+
+        .img-wrapper {
+            position: relative;
+        }
+
+        .img-overlay {
+            position: absolute;
+            top: 45%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+
+        .img-overlay:before {
+            content: ' ';
+            display: block;
+            /* adjust 'height' to position overlay content vertically */
+            height: 50%;
+        }
+
+        body {
+            background-color: black;
+        }
+
     </style>
 </head>
 <body>
@@ -32,15 +57,9 @@
     <div class="row">
         <div class="col-md-12">
             <img name="pic.png" id="random" alt="placeholder 960" class="img-responsive" />
-        </div>
-        <div class="wrapper">
-
-            <div class="button">
-                <span class="button__mask"></span>
-                <span class="button__text">button</span>
-                <span class="button__text button__text--bis">button</span>
+            <div class="img-overlay">
+                <button class="btn btn-md btn-primary">View as Guest</button>
             </div>
-
         </div>
     </div>
 </div>
