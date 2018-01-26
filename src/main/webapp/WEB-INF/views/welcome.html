@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="Home page of NBA Data Visuals"/>
+    <meta name="keywords" content="NBA, Basketball, Data, Stats, Analysis"/>
+    <meta name="author" content="Jeremy Timperio"/>
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <title>Welcome to NBA Stats</title>
+
+    <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/resources/css/WelcomeButton.scss}" rel="stylesheet"/>
+
+    <style>
+
+        /*html { overflow-y: hidden; overflow-x: hidden;}*/
+
+        .no-padding {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="container-fluid no-padding">
+    <div class="row">
+        <div class="col-md-12">
+            <img name="pic.png" id="random" alt="placeholder 960" class="img-responsive" />
+        </div>
+        <div class="wrapper">
+
+            <div class="button">
+                <span class="button__mask"></span>
+                <span class="button__text">button</span>
+                <span class="button__text button__text--bis">button</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    var val = 13;
+
+    window.onload = function(){
+        var num = Math.floor(Math.random() * val) + 1;
+        document.getElementById("random").src = "resources/img/homepage/pic" + num + ".jpg";
+    }
+</script>
+
+
+<!-- /container -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script th:src="@{/resources/js/bootstrap.min.js}"></script>
+</body>
+</html>
