@@ -8,12 +8,11 @@
     <meta name="keywords" content="NBA, Basketball, Data, Stats, Analysis"/>
     <meta name="author" content="Jeremy Timperio"/>
 
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="resources/img/header/Icons-Land-Metro-Raster-Sport-Basketball-Court.ico" />
 
     <title>Welcome to NBA Stats</title>
 
     <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link th:href="@{/resources/css/WelcomeButton.scss}" rel="stylesheet"/>
 
     <style>
 
@@ -58,7 +57,9 @@
         <div class="col-md-12">
             <img name="pic.png" id="random" alt="placeholder 960" class="img-responsive" />
             <div class="img-overlay">
-                <button class="btn btn-md btn-primary">View as Guest</button>
+                    <div class="button">
+                        <button class="btn btn-lg btn-primary">View as Guest</button>
+                    </div>
             </div>
         </div>
     </div>
@@ -69,7 +70,7 @@
 
     window.onload = function(){
         var num = Math.floor(Math.random() * val) + 1;
-        document.getElementById("random").src = "resources/img/homepage/pic" + num + ".jpg";
+        document.getElementById("random").src = "resources/img/welcome/pic" + num + ".jpg";
     }
 </script>
 
