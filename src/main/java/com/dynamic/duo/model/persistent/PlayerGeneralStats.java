@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "general_stats")
+@Table(name = "player_general_stats")
 public class PlayerGeneralStats extends DomainObject<PlayerGeneralStats> implements Serializable {
 
     /**cache of playerGeneralStats objects*/

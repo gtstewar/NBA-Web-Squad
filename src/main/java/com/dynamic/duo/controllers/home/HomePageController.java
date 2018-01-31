@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HomePageController {
-    @RequestMapping(value = "home", method = RequestMethod.GET)
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home(@RequestParam(value="id", defaultValue="1") Long id , Model model) {
         Player player = Player.getByID(id);
         PlayerGeneralStats gen = PlayerGeneralStats.getByPlayerID(player.getId());
