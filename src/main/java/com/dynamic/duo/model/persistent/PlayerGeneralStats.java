@@ -75,8 +75,8 @@ public class PlayerGeneralStats extends DomainObject<PlayerGeneralStats> impleme
     private String team_ab;
     private int age;
     private int gp;
-    private int wins;
-    private int loses;
+    private int w;
+    private int l;
     private float win_pct;
     private float min;
     private float fgm;
@@ -183,19 +183,19 @@ public class PlayerGeneralStats extends DomainObject<PlayerGeneralStats> impleme
     }
 
     public int getWins() {
-        return wins;
+        return w;
     }
 
     public void setWins(int wins) {
-        this.wins = wins;
+        this.w = wins;
     }
 
     public int getLoses() {
-        return loses;
+        return l;
     }
 
     public void setLoses(int loses) {
-        this.loses = loses;
+        this.l = loses;
     }
 
     public float getWin_pct() {
