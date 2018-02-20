@@ -12,8 +12,8 @@
 
     <title>Welcome to NBA Stats</title>
 
-    <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet"/>
     <link th:href="@{/resources/css/WelcomeButton.css}" rel="stylesheet"/>
+    <link th:href="@{/resources/css/WelcomeQuote.css}" rel="stylesheet"/>
 
     <style>
 
@@ -26,7 +26,7 @@
 
         .img-overlay {
             position: absolute;
-            top: 45%;
+            top: 30%;
             bottom: 0;
             left: 0;
             right: 0;
@@ -36,12 +36,22 @@
             background-color: black;
         }
 
-
+        html {
+            background: no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
 
     </style>
 </head>
 <body>
 
+<div class="img-overlay" id="quote">
+    <p>"I have short goals - to get better every day, to help my teammates every day - but my only ultimate goal is to win an NBA championship. It's all that matters. I dream about it. I dream about it all the time, how it would look, how it would feel. It would be so amazing."</p>
+    <h1>- Lebron James</h1>
+</div>
 
 <div class="container-fluid no-padding">
     <div class="row">
@@ -65,10 +75,5 @@
         document.getElementById("random").src = "resources/img/welcome/pic" + num + ".jpg";
     }
 </script>
-
-
-<!-- /container -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script th:src="@{/resources/js/bootstrap.min.js}"></script>
 </body>
 </html>
