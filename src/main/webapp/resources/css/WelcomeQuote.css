@@ -10,11 +10,13 @@
     -o-animation: fadein 3s; /* Opera < 12.1 */
     animation: fadein 3s;
 }
-#quote h1{
+#author{
     margin-top: 25px;
     font-size: 21px;
     text-align: center;
     color: white;
+    font-style: italic;
+    font-weight: 600;
 
     -webkit-animation: fadein 6s; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: fadein 6s; /* Firefox < 16 */

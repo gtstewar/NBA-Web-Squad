@@ -32,6 +32,14 @@
             right: 0;
         }
 
+        .img-overlay-button {
+            position: absolute;
+            top: 50%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
         body {
             background-color: black;
         }
@@ -47,17 +55,16 @@
     </style>
 </head>
 <body>
-
-<div class="img-overlay" id="quote">
-    <p>"I have short goals - to get better every day, to help my teammates every day - but my only ultimate goal is to win an NBA championship. It's all that matters. I dream about it. I dream about it all the time, how it would look, how it would feel. It would be so amazing."</p>
-    <h1>- Lebron James</h1>
+<!--random quote-->
+<div class="img-overlay">
+     <div id="quote"></div>
 </div>
 
 <div class="container-fluid no-padding">
     <div class="row">
         <div class="col-md-12">
             <img name="pic.png" id="random" alt="placeholder 960" class="img-responsive" />
-            <div class="img-overlay">
+            <div class="img-overlay-button">
                 <sectionS>
                     <a href="home">Guest</a>
                 </sectionS>
@@ -66,13 +73,19 @@
     </div>
 </div>
 
-
+<script type="text/javascript" charset="utf-8" src="resources/js/RandomQuote.js"></script>
 <script>
-    var val = 13;
+    var picLen = 13;
 
     window.onload = function(){
-        var num = Math.floor(Math.random() * val) + 1;
+        var num = Math.floor(Math.random() * picLen) + 1;
         document.getElementById("random").src = "resources/img/welcome/pic" + num + ".jpg";
+        //getting a new random number to attach to a quote and setting a limit
+        var sourceLength = quoteSource.length;
+        var randomNumber = Math.floor(Math.random() * sourceLength);
+        var newQuote = quoteSource[randomNumber].quote;
+        var newQuoteAuthor = quoteSource[randomNumber].name;
+        document.getElementById('quote').innerHTML = '<p>'+'"'+newQuote+'"'+'</p>'+'<p id="author">'+'-								'+newQuoteAuthor+'</p>';
     }
 </script>
 </body>
