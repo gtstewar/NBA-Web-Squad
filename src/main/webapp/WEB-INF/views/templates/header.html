@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet"/>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Header</title>
+</head>
+<body>
+<div th:fragment="toolbar">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-inverse">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">NBA Data Visuals</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a th:href="@{https://www.espn.go.com}">Players</a></li>
+            </ul>
+                <form class="navbar-form navbar-left">
+                    <input type="text" class="form-control" style = "width: 500px" placeholder="Search"/>
+                </form>
+            <ul class = "nav navbar-nav">
+                <li><a href="#">Teams</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script th:src="@{/resources/js/bootstrap.min.js}"></script>
+</body>
+</html>
