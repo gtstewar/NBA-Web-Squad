@@ -18,6 +18,46 @@
 </head>
 <body>
 <div th:include="templates/header :: toolbar "></div>
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body text-center">
+                <h1 class="card-header"> Points </h1>
+                    <ul class="list-group list-group-flush" th:each="player : ${points_top5}">
+                        <li class="list-group-item" th:if="${playerStat.index} == 0" th:text="${player.player_name} + '         ' + ${player.pts}"></li>
+                        <li class="list-group-item" th:if="${playerStat.index} != 0" th:text="${player.player_name} + '         ' + ${player.pts}"></li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <div class="card-body text-center">
+                <h1 class="card-title"> Assists </h1>
+                <div th:each="player : ${ast_top5}">
+                    <p class="card-text" th:text="${player.player_name}"></p>
+                    <p class="card-text" th:text="${player.ast}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <div class="card-body text-center">
+                <h1 class="card-title"> Rebounds </h1>
+                <div th:each="player : ${reb_top5}">
+                    <p class="card-text" th:text="${player.player_name}"></p>
+                    <p class="card-text" th:text="${player.reb}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 <div class="row">
     <div class="col">
         <div class="card">

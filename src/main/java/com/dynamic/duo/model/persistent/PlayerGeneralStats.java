@@ -6,6 +6,8 @@ import org.hibernate.Session;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "player_general_stats")
@@ -50,6 +52,26 @@ public class PlayerGeneralStats extends DomainObject<PlayerGeneralStats> impleme
             //create HQL query in session after retrieving from sessionFactory
             stats = (PlayerGeneralStats) session
                     .createQuery(query).setParameter("id", id).list().get(0);
+            session.getTransaction().commit();
+            session.close();
+            //put in cache since it wasnt in cache originally
+        } catch (Exception e) {
+            //catch all exceptions
+        }
+        return stats;
+    }
+
+    public static List<PlayerGeneralStats> getTopPlayers(String col, int max){
+        ArrayList<PlayerGeneralStats> stats = new ArrayList<PlayerGeneralStats>();
+        try {
+            final Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+
+            //whole query
+            String query = "FROM PlayerGeneralStats ORDER BY " + col + " DESC";
+            //create HQL query in session after retrieving from sessionFactory
+            stats = (ArrayList<PlayerGeneralStats>)session.createQuery(query).setMaxResults(max).list();
+
             session.getTransaction().commit();
             session.close();
             //put in cache since it wasnt in cache originally
