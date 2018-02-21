@@ -11,10 +11,16 @@
     <title>Home Page</title>
 
     <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet"/>
+
+    <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Raleway:400,800}"/>
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}"/>
 </head>
 <body>
-<div th:insert="fragments/toolbar"></div>
-<div class="container">
+<div th:include = "templates/header :: toolbar "></div>
+
+<div class = "container">
+    test
+
 </div>
 <!-- /container -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
