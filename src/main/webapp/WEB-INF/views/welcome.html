@@ -8,55 +8,85 @@
     <meta name="keywords" content="NBA, Basketball, Data, Stats, Analysis"/>
     <meta name="author" content="Jeremy Timperio"/>
 
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="resources/img/header/Icons-Land-Metro-Raster-Sport-Basketball-Court.ico" />
 
     <title>Welcome to NBA Stats</title>
 
-    <link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link th:href="@{/resources/css/WelcomeButton.scss}" rel="stylesheet"/>
+    <link th:href="@{/resources/css/WelcomeButton.css}" rel="stylesheet"/>
+    <link th:href="@{/resources/css/WelcomeQuote.css}" rel="stylesheet"/>
 
     <style>
 
-        /*html { overflow-y: hidden; overflow-x: hidden;}*/
+        html { overflow-y: hidden; overflow-x: hidden;}
 
         .no-padding {
             padding-left: 0;
             padding-right: 0;
         }
+
+        .img-overlay {
+            position: absolute;
+            top: 30%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .img-overlay-button {
+            position: absolute;
+            top: 50%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        html {
+            background: no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
     </style>
 </head>
 <body>
-
+<!--random quote-->
+<div class="img-overlay">
+     <div id="quote"></div>
+</div>
 
 <div class="container-fluid no-padding">
     <div class="row">
         <div class="col-md-12">
             <img name="pic.png" id="random" alt="placeholder 960" class="img-responsive" />
-        </div>
-        <div class="wrapper">
-
-            <div class="button">
-                <span class="button__mask"></span>
-                <span class="button__text">button</span>
-                <span class="button__text button__text--bis">button</span>
+            <div class="img-overlay-button">
+                <sectionS>
+                    <a href="home">Guest</a>
+                </sectionS>
             </div>
-
         </div>
     </div>
 </div>
 
+<script type="text/javascript" charset="utf-8" src="resources/js/RandomQuote.js"></script>
 <script>
-    var val = 13;
+    var picLen = 13;
 
     window.onload = function(){
-        var num = Math.floor(Math.random() * val) + 1;
-        document.getElementById("random").src = "resources/img/homepage/pic" + num + ".jpg";
+        var num = Math.floor(Math.random() * picLen) + 1;
+        document.getElementById("random").src = "resources/img/welcome/pic" + num + ".jpg";
+        //getting a new random number to attach to a quote and setting a limit
+        var sourceLength = quoteSource.length;
+        var randomNumber = Math.floor(Math.random() * sourceLength);
+        var newQuote = quoteSource[randomNumber].quote;
+        var newQuoteAuthor = quoteSource[randomNumber].name;
+        document.getElementById('quote').innerHTML = '<p>'+'"'+newQuote+'"'+'</p>'+'<h1 id="author">'+'-								'+newQuoteAuthor+'</h1>';
     }
 </script>
-
-
-<!-- /container -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script th:src="@{/resources/js/bootstrap.min.js}"></script>
 </body>
 </html>
