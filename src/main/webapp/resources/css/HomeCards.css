@@ -1,9 +1,6 @@
 .leader{
     font-weight: 600;
 }
-.leader:hover{
-    color:gold;
-}
 .playerName{
     float: left;
 }
