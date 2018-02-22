@@ -77,7 +77,7 @@ public abstract class DomainObject<D extends DomainObject<D>> {
         final Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         //whole query
-        String query = "FROM  " + table.getSimpleName() + " ORDER BY " + col + " DESC";
+        String query = "FROM " + table.getSimpleName() + " ORDER BY " + col + " DESC";
         //create HQL query in session after retrieving from sessionFactory
         List<? extends DomainObject> rows = session.createQuery(query).setMaxResults(max).list();
         session.getTransaction().commit();
