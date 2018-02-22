@@ -6,15 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content="Home page of NBA Data Visuals"/>
     <meta name="keywords" content="NBA, Basketball, Data, Stats, Analysis"/>
-    <meta name="author" content="Grady Stewart"/>
+    <meta name="author" content="Grady Stewart, Jeremy Timperio"/>
 
     <title>Home Page</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="resources/img/header/Icons-Land-Metro-Raster-Sport-Basketball-Court.ico" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
 
     <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Raleway:400,800}"/>
     <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}"/>
+    <link th:href="@{/resources/css/HomeCards.css}" rel="stylesheet"/>
 </head>
 <body>
 <div th:include="templates/header :: toolbar "></div>
@@ -23,9 +26,10 @@
     <div class="col">
         <div class="card">
             <div class="card-body text-center">
-                <h1 class="card-header"> Points </h1>
-                    <ul class="list-group list-group-flush" th:each="player : ${points_top5}">
-                        <li class="list-group-item" th:if="${playerStat.index} == 0" th:text="${player.player_name} + '         ' + ${player.pts}"></li>
+                <h1 class="card-header"> Points (PPG) </h1>
+                <img src="" id="image"/>
+                <ul class="list-group list-group-flush" th:each="player : ${points_top5}">
+                        <li id="leader" class="list-group-item list-leader" th:if="${playerStat.index} == 0" th:text="${player.player_name} + '         ' + ${player.pts}"></li>
                         <li class="list-group-item" th:if="${playerStat.index} != 0" th:text="${player.player_name} + '         ' + ${player.pts}"></li>
                     </ul>
             </div>
@@ -35,7 +39,7 @@
     <div class="col">
         <div class="card">
             <div class="card-body text-center">
-                <h1 class="card-title"> Assists </h1>
+                <h1 class="card-header"> Assists </h1>
                 <div th:each="player : ${ast_top5}">
                     <p class="card-text" th:text="${player.player_name}"></p>
                     <p class="card-text" th:text="${player.ast}"></p>
@@ -47,7 +51,7 @@
     <div class="col">
         <div class="card">
             <div class="card-body text-center">
-                <h1 class="card-title"> Rebounds </h1>
+                <h1 class="card-header"> Rebounds </h1>
                 <div th:each="player : ${reb_top5}">
                     <p class="card-text" th:text="${player.player_name}"></p>
                     <p class="card-text" th:text="${player.reb}"></p>
@@ -58,35 +62,19 @@
 
 </div>
 
-<div class="row">
-    <div class="col">
-        <div class="card">
-            <div class="card-body text-center">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title</p>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-            <div class="card-body text-center">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title</p>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card">
-            <div class="card-body text-center">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title</p>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
-    </div>
-</div>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var baseURl = "https://nba-players.herokuapp.com/players/";
+    /*pts leader picture*/
+    var ptsPlayerName = /*[[${points_top5[0].player_name}]]*/ 'default';
+    var arr = ptsPlayerName.split(' ');
+    var ptsURL = baseURl.concat(arr[1],'/',arr[0]);
+    document.getElementById("image").src = ptsURL;
+    /*ast leader picture*/
+
+    /*reb leader picture*/
+    /*]]>*/
+</script>
 
 <!-- /container -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
