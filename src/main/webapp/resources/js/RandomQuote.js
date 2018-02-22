@@ -74,6 +74,10 @@
         {
             quote:"When your jumper is on, the basket seems like an ocean and the basketball seems like a rock.",
             name:"Allen Iverson"
+        },
+        {
+            quote:"1 step back, 2 steps forward. Let’s climb the mountain, let’s dominate. Violence, speed, and momentum and guess what? We’re at the tippity top of the mountain...but we’re really only half way up.",
+            name:"Dr. DisRespect"
         }
     ];
 
