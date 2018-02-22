@@ -2,6 +2,7 @@ package com.dynamic.duo.model.persistent;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,31 +19,28 @@ import javax.persistence.Table;
  * create an overridden getAll() method in the subclasses that passes in their
  * class type to the DomainObject.getAll(Class cls) method so that it can
  * perform the database retrieval.
- *
+ * <p>
  * The DomainObject (this class) itself isn't persisted to the database, but it
  * is included here as it is the root class for all persistent classes.
  *
+ * @param <D> Subtype of DomainObject in question
  * @author Kai Presler-Marshall - grabbed from iTrust2
- *
- * @param <D>
- *            Subtype of DomainObject in question
  */
-@SuppressWarnings ( { "unchecked", "rawtypes" } )
-public abstract class DomainObject <D extends DomainObject<D>> {
+@SuppressWarnings({"unchecked", "rawtypes"})
+public abstract class DomainObject<D extends DomainObject<D>> {
 
     /**
      * Performs a getAll on the subtype of DomainObject in question. The
      * resulting list can then be streamed and filtered on any parameters
      * desired
      *
-     * @param cls
-     *            class to find DomainObjects for
+     * @param cls class to find DomainObjects for
      * @return A List of all records for the selected type.
      */
-    protected static List< ? extends DomainObject> getAll ( final Class cls ) {
+    protected static List<? extends DomainObject> getAll(final Class cls) {
         final Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        final List< ? extends DomainObject< ? >> requests = session.createCriteria( cls ).list();
+        final List<? extends DomainObject<?>> requests = session.createCriteria(cls).list();
         session.getTransaction().commit();
         session.close();
 
@@ -53,21 +51,38 @@ public abstract class DomainObject <D extends DomainObject<D>> {
      * Retrieves a list of all matching DomainObject elements from the class
      * provided meeting the where clause provided.
      *
-     * @param table
-     *            The subclass of DomainObject to retrieve from
-     * @param whereClause
-     *            The valid (SQL) where clause to use for filtering results
+     * @param table       The subclass of DomainObject to retrieve from
+     * @param whereClause The valid (SQL) where clause to use for filtering results
      * @return A list of all matching elements
      */
-    public static List< ? extends DomainObject> getWhere ( final Class table, final String whereClause ) {
+    public static List<? extends DomainObject> getWhere(final Class table, final String whereClause) {
         final Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        final List< ? extends DomainObject> requests = session
-                .createQuery( "FROM " + table.getSimpleName() + " WHERE " + whereClause ).list();
+        final List<? extends DomainObject> requests = session
+                .createQuery("FROM " + table.getSimpleName() + " WHERE " + whereClause).list();
         session.getTransaction().commit();
         session.close();
 
         return requests;
+    }
+
+    /**
+     * gets top x results sorted by a column that is passed in from a given table
+     * @param table - table to be selected from
+     * @param col - column to sort by
+     * @param max - number of items to be returned
+     * @return rows - List of Persistent Objects to be returned
+     */
+    public static List<? extends DomainObject> getTopItems(final Class table, String col, int max) {
+        final Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        //whole query
+        String query = "FROM  " + table.getSimpleName() + " ORDER BY " + col + " DESC";
+        //create HQL query in session after retrieving from sessionFactory
+        List<? extends DomainObject> rows = session.createQuery(query).setMaxResults(max).list();
+        session.getTransaction().commit();
+        session.close();
+        return rows;
     }
 
     /**
@@ -76,19 +91,18 @@ public abstract class DomainObject <D extends DomainObject<D>> {
      * Visibility is set to protected to force subclasses of DomainObject to
      * override this.
      *
-     * @param cls
-     *            class to delete instances of
+     * @param cls class to delete instances of
      */
-    public static void deleteAll ( final Class cls ) {
+    public static void deleteAll(final Class cls) {
         final Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        final List<DomainObject> instances = session.createCriteria( cls ).list();
-        for ( final DomainObject d : instances ) {
-            session.delete( d );
+        final List<DomainObject> instances = session.createCriteria(cls).list();
+        for (final DomainObject d : instances) {
+            session.delete(d);
         }
         session.getTransaction().commit();
         session.close();
-        getCache( cls ).clear();
+        getCache(cls).clear();
     }
 
     /**
@@ -96,53 +110,50 @@ public abstract class DomainObject <D extends DomainObject<D>> {
      * exist a new record will be created in the database. If the object already
      * exists in the DB, then the existing record will be updated.
      */
-    public void save () {
+    public void save() {
         final Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        session.saveOrUpdate( this );
+        session.saveOrUpdate(this);
         session.getTransaction().commit();
         session.close();
 
-        getCache( this.getClass() ).put( this.getId(), this );
+        getCache(this.getClass()).put(this.getId(), this);
     }
 
     /**
      * Deletes the selected DomainObject from the database. This is operation
      * cannot be reversed.
      */
-    public void delete () {
+    public void delete() {
         final Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        session.delete( this );
+        session.delete(this);
         session.getTransaction().commit();
         session.close();
-        getCache( this.getClass() ).remove( this.getId() );
+        getCache(this.getClass()).remove(this.getId());
     }
 
     /**
      * Retrieves a specific instance of the DomainObject subtype by its
      * persistent ID
      *
-     * @param cls
-     *            class to retrieve instance of by id
-     * @param id
-     *            id of object
+     * @param cls class to retrieve instance of by id
+     * @param id  id of object
      * @return object with given id
      */
-    public static DomainObject getById ( final Class cls, final Object id ) {
+    public static DomainObject getById(final Class cls, final Object id) {
         DomainObject obj;
         try {
             obj = (DomainObject) cls.newInstance();
-        }
-        catch ( final Exception e ) {
+        } catch (final Exception e) {
             return null;
         }
         final Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        session.load( obj, (Serializable) id );
+        session.load(obj, (Serializable) id);
         session.getTransaction().commit();
         session.close();
-        getCache( cls ).put( obj.getId(), obj );
+        getCache(cls).put(obj.getId(), obj);
         return obj;
     }
 
@@ -151,26 +162,22 @@ public abstract class DomainObject <D extends DomainObject<D>> {
      * Will return null if the field is not valid for the DomainObject type or
      * no record exists with the value provided.
      *
-     * @param cls
-     *            class of DomainObject
-     * @param field
-     *            The field of the object (ie, name, id, etc) requested
-     * @param value
-     *            The value for the field in question
+     * @param cls   class of DomainObject
+     * @param field The field of the object (ie, name, id, etc) requested
+     * @param value The value for the field in question
      * @return object associated with class and field
      */
-    public static DomainObject getBy ( final Class cls, final String field, final String value ) {
-        final List<Field> fields = Arrays.asList( cls.getDeclaredFields() );
-        for ( final DomainObject d : getAll( cls ) ) {
-            for ( final Field f : fields ) {
-                f.setAccessible( true );
+    public static DomainObject getBy(final Class cls, final String field, final String value) {
+        final List<Field> fields = Arrays.asList(cls.getDeclaredFields());
+        for (final DomainObject d : getAll(cls)) {
+            for (final Field f : fields) {
+                f.setAccessible(true);
                 try {
-                    if ( f.get( d ).equals( value ) ) {
-                        getCache( cls ).put( d.getId(), d );
+                    if (f.get(d).equals(value)) {
+                        getCache(cls).put(d.getId(), d);
                         return d;
                     }
-                }
-                catch ( final Exception e ) {
+                } catch (final Exception e) {
                     // Ignore exception
                 }
             }
@@ -182,12 +189,11 @@ public abstract class DomainObject <D extends DomainObject<D>> {
      * Retrieves the instance of the DomainObjectCache associated with the
      * subclass of DomainObject specified
      *
-     * @param cls
-     *            The subclass of DomainObject to retrieve a cache for
+     * @param cls The subclass of DomainObject to retrieve a cache for
      * @return The cache found, or null if it does not exist.
      */
-    protected static DomainObjectCache getCache ( final Class cls ) {
-        return DomainObjectCache.getCacheByClass( cls );
+    protected static DomainObjectCache getCache(final Class cls) {
+        return DomainObjectCache.getCacheByClass(cls);
     }
 
     /**
@@ -196,6 +202,6 @@ public abstract class DomainObject <D extends DomainObject<D>> {
      *
      * @return ID of the DomainObject.
      */
-    abstract public Serializable getId ();
+    abstract public Serializable getId();
 
 }
