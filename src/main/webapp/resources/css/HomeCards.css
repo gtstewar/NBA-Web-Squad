@@ -1,3 +1,17 @@
-#leader{
-    font-weight: 500;
+ul{
+    border-top: 0;
+}
+
+li{
+    border-bottom:0;
+}
+.leader{
+    font-weight: 600;
+}
+.playerName{
+    float: left;
+}
+.value{
+    float: right;
+    width: 20%;
 }

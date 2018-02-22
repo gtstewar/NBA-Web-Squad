@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:float="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -10,7 +11,8 @@
 
     <title>Home Page</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="resources/img/header/Icons-Land-Metro-Raster-Sport-Basketball-Court.ico" />
+    <link rel="shortcut icon" type="image/x-icon"
+          href="resources/img/header/Icons-Land-Metro-Raster-Sport-Basketball-Court.ico"/>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
@@ -27,11 +29,23 @@
         <div class="card">
             <div class="card-body text-center">
                 <h1 class="card-header"> Points (PPG) </h1>
-                <img src="" id="image"/>
+                <img src="" id="ptsImage"/>
                 <ul class="list-group list-group-flush" th:each="player : ${points_top5}">
-                        <li id="leader" class="list-group-item list-leader" th:if="${playerStat.index} == 0" th:text="${player.player_name} + '         ' + ${player.pts}"></li>
-                        <li class="list-group-item" th:if="${playerStat.index} != 0" th:text="${player.player_name} + '         ' + ${player.pts}"></li>
-                    </ul>
+                    <div th:if="${playerStat.index} == 0">
+                        <li class="list-group-item leader">
+                            <div class="playerName" th:if="${playerStat.index} == 0"
+                                 th:text="${player.player_name}"></div>
+                            <div class="value" th:if="${playerStat.index} == 0" th:text="${player.pts}"></div>
+                        </li>
+                    </div>
+                    <div th:unless="${playerStat.index} == 0">
+                        <li class="list-group-item">
+                            <div class="playerName" th:if="${playerStat.index} != 0"
+                                 th:text="${player.player_name}"></div>
+                            <div class="value" th:if="${playerStat.index} != 0" th:text="${player.pts}"></div>
+                        </li>
+                    </div>
+                </ul>
             </div>
         </div>
     </div>
@@ -39,11 +53,18 @@
     <div class="col">
         <div class="card">
             <div class="card-body text-center">
-                <h1 class="card-header"> Assists </h1>
-                <div th:each="player : ${ast_top5}">
-                    <p class="card-text" th:text="${player.player_name}"></p>
-                    <p class="card-text" th:text="${player.ast}"></p>
-                </div>
+                <h1 class="card-header"> Assists (APG) </h1>
+                <img src="" id="astImage"/>
+                <ul class="list-group list-group-flush" th:each="player : ${ast_top5}">
+                    <li class="list-group-item leader">
+                        <div class="playerName" th:if="${playerStat.index} == 0" th:text="${player.player_name}"></div>
+                        <div class="value" th:if="${playerStat.index} == 0" th:text="${player.ast}"></div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="playerName" th:if="${playerStat.index} != 0" th:text="${player.player_name}"></div>
+                        <div class="value" th:if="${playerStat.index} != 0" th:text="${player.ast}"></div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -68,10 +89,13 @@
     /*pts leader picture*/
     var ptsPlayerName = /*[[${points_top5[0].player_name}]]*/ 'default';
     var arr = ptsPlayerName.split(' ');
-    var ptsURL = baseURl.concat(arr[1],'/',arr[0]);
-    document.getElementById("image").src = ptsURL;
+    var ptsURL = baseURl.concat(arr[1], '/', arr[0]);
+    document.getElementById("ptsImage").src = ptsURL;
     /*ast leader picture*/
-
+    var astPlayerName = /*[[${ast_top5[0].player_name}]]*/ 'default';
+    var arr = astPlayerName.split(' ');
+    var astURL = baseURl.concat(arr[1], '/', arr[0]);
+    document.getElementById("astImage").src = astURL;
     /*reb leader picture*/
     /*]]>*/
 </script>
