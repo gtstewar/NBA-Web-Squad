@@ -1,12 +1,8 @@
-ul{
-    border-top: 0;
-}
-
-li{
-    border-bottom:0;
-}
 .leader{
     font-weight: 600;
+}
+.leader:hover{
+    color:gold;
 }
 .playerName{
     float: left;
