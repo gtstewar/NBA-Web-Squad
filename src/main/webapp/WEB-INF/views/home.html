@@ -35,15 +35,13 @@
                     <ul class="list-group list-group-flush">
                         <div th:if="${playerStat.index} == 0">
                             <li class="list-group-item leader">
-                                <div class="playerName"
-                                     th:text="${player.player_name}"></div>
+                                <div class="playerName" th:text="${player.player_name} + ' ' + ${player.team_ab}"></div>
                                 <div class="value" th:text="${player.pts}"></div>
                             </li>
                         </div>
                         <div th:if="${playerStat.index} != 0">
                             <li class="list-group-item">
-                                <div class="playerName"
-                                     th:text="${player.player_name}"></div>
+                                <div class="playerName" th:text="${player.player_name} + ' ' + ${player.team_ab}"></div>
                                 <div class="value" th:text="${player.pts}"></div>
                             </li>
                         </div>
@@ -62,16 +60,14 @@
                     <ul class="list-group list-group-flush">
                         <div th:if="${playerStat.index} == 0">
                             <li class="list-group-item leader">
-                                <div class="playerName" th:if="${playerStat.index} == 0"
-                                     th:text="${player.player_name}"></div>
-                                <div class="value" th:if="${playerStat.index} == 0" th:text="${player.ast}"></div>
+                                <div class="playerName" th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
+                                <div class="value" th:text="${player.ast}"></div>
                             </li>
                         </div>
                         <div th:if="${playerStat.index} != 0">
                             <li class="list-group-item">
-                                <div class="playerName" th:if="${playerStat.index} != 0"
-                                     th:text="${player.player_name}"></div>
-                                <div class="value" th:if="${playerStat.index} != 0" th:text="${player.ast}"></div>
+                                <div class="playerName" th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
+                                <div class="value" th:text="${player.ast}"></div>
                             </li>
                         </div>
                     </ul>
@@ -90,14 +86,14 @@
                         <div th:if="${playerStat.index} == 0">
                             <li class="list-group-item leader">
                                 <div class="playerName" th:if="${playerStat.index} == 0"
-                                     th:text="${player.player_name}"></div>
+                                     th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
                                 <div class="value" th:if="${playerStat.index} == 0" th:text="${player.reb}"></div>
                             </li>
                         </div>
                         <div th:if="${playerStat.index} != 0">
                             <li class="list-group-item">
                                 <div class="playerName" th:if="${playerStat.index} != 0"
-                                     th:text="${player.player_name}"></div>
+                                     th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
                                 <div class="value" th:if="${playerStat.index} != 0" th:text="${player.reb}"></div>
                             </li>
                         </div>
@@ -106,6 +102,86 @@
             </div>
         </div>
     </div>
+
+    <div class="col">
+        <div class="card">
+            <div class="card-body text-center">
+                <h1 class="card-header"> Steals (SPG) </h1>
+                <img src="" id="stlImage"/>
+                <div th:each="player : ${stl_top5}">
+                    <ul class="list-group list-group-flush">
+                        <div th:if="${playerStat.index} == 0">
+                            <li class="list-group-item leader">
+                                <div class="playerName" th:if="${playerStat.index} == 0"
+                                     th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
+                                <div class="value" th:if="${playerStat.index} == 0" th:text="${player.stl}"></div>
+                            </li>
+                        </div>
+                        <div th:if="${playerStat.index} != 0">
+                            <li class="list-group-item">
+                                <div class="playerName" th:if="${playerStat.index} != 0"
+                                     th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
+                                <div class="value" th:if="${playerStat.index} != 0" th:text="${player.stl}"></div>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-body text-center">
+                <h1 class="card-header"> Blocks (BPG) </h1>
+                <img src="" id="blkImage"/>
+                <div th:each="player : ${blk_top5}">
+                    <ul class="list-group list-group-flush">
+                        <div th:if="${playerStat.index} == 0">
+                            <li class="list-group-item leader">
+                                <div class="playerName" th:if="${playerStat.index} == 0"
+                                     th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
+                                <div class="value" th:if="${playerStat.index} == 0" th:text="${player.blk}"></div>
+                            </li>
+                        </div>
+                        <div th:if="${playerStat.index} != 0">
+                            <li class="list-group-item">
+                                <div class="playerName" th:if="${playerStat.index} != 0"
+                                     th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
+                                <div class="value" th:if="${playerStat.index} != 0" th:text="${player.blk}"></div>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-body text-center">
+                <h1 class="card-header"> Turnovers (TPG) </h1>
+                <img src="" id="tovImage"/>
+                <div th:each="player : ${tov_top5}">
+                    <ul class="list-group list-group-flush">
+                        <div th:if="${playerStat.index} == 0">
+                            <li class="list-group-item leader">
+                                <div class="playerName" th:if="${playerStat.index} == 0"
+                                     th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
+                                <div class="value" th:if="${playerStat.index} == 0" th:text="${player.tov}"></div>
+                            </li>
+                        </div>
+                        <div th:if="${playerStat.index} != 0">
+                            <li class="list-group-item">
+                                <div class="playerName" th:if="${playerStat.index} != 0"
+                                     th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
+                                <div class="value" th:if="${playerStat.index} != 0" th:text="${player.tov}"></div>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </div>
 
@@ -127,6 +203,21 @@
     var arr = rebPlayerName.split(' ');
     var rebURL = baseURl.concat(arr[1], '/', arr[0]);
     document.getElementById("rebImage").src = rebURL;
+    /*stl leader picture*/
+    var stlPlayerName = /*[[${stl_top5[0].player_name}]]*/ 'default';
+    var arr = stlPlayerName.split(' ');
+    var stlURL = baseURl.concat(arr[1], '/', arr[0]);
+    document.getElementById("stlImage").src = stlURL;
+    /*blk leader picture*/
+    var blkPlayerName = /*[[${blk_top5[0].player_name}]]*/ 'default';
+    var arr = blkPlayerName.split(' ');
+    var blkURL = baseURl.concat(arr[1], '/', arr[0]);
+    document.getElementById("blkImage").src = blkURL;
+    /*tov leader picture*/
+    var tovPlayerName = /*[[${tov_top5[0].player_name}]]*/ 'default';
+    var arr = tovPlayerName.split(' ');
+    var tovURL = baseURl.concat(arr[1], '/', arr[0]);
+    document.getElementById("tovImage").src = tovURL;
     /*]]>*/
 </script>
 
