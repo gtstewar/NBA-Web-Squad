@@ -73,11 +73,16 @@ public abstract class DomainObject<D extends DomainObject<D>> {
      * @param max - number of items to be returned
      * @return rows - List of Persistent Objects to be returned
      */
-    public static List<? extends DomainObject> getTopItems(final Class table, String col, int max) {
+    public static List<? extends DomainObject> getTopItems(final Class table, String col, int max, boolean desc) {
         final Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        //whole query
-        String query = "FROM " + table.getSimpleName() + " ORDER BY " + col + " DESC";
+        String query;
+        if(desc) {
+            query = "FROM " + table.getSimpleName() + " ORDER BY " + col + " DESC";
+        } else {
+            //whole query
+            query = "FROM " + table.getSimpleName() + " ORDER BY " + col + " ASC";
+        }
         //create HQL query in session after retrieving from sessionFactory
         List<? extends DomainObject> rows = session.createQuery(query).setMaxResults(max).list();
         session.getTransaction().commit();

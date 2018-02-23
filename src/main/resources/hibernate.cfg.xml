@@ -9,5 +9,6 @@
         <mapping class="com.dynamic.duo.model.persistent.PlayerGeneralStats" />
         <mapping class="com.dynamic.duo.model.persistent.PlayerAdvancedStats" />
         <mapping class="com.dynamic.duo.model.persistent.Team" />
+        <mapping class="com.dynamic.duo.model.persistent.TeamGeneralStats" />
     </session-factory>
 </hibernate-configuration>

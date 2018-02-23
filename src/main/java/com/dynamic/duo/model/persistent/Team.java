@@ -6,7 +6,6 @@ import org.hibernate.Session;
 import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Table(name = "teams", schema = "nba")
@@ -88,9 +87,8 @@ public class Team extends DomainObject<Team> implements Serializable {
     private String nickname;
     private String conference;
     private String division;
-    private int is_current_team;
-    private int is_historic_team;
-    private int nba_team_id;
+    private byte is_current_team;
+    private String nba_team_id;
 
 
     //getters and setters for columns
@@ -164,23 +162,15 @@ public class Team extends DomainObject<Team> implements Serializable {
         return is_current_team;
     }
 
-    public void setIs_current_team(int is_current_team) {
+    public void setIs_current_team(byte is_current_team) {
         this.is_current_team = is_current_team;
     }
 
-    public int getIs_historic_team() {
-        return is_historic_team;
-    }
-
-    public void setIs_historic_team(int is_historic_team) {
-        this.is_historic_team = is_historic_team;
-    }
-
-    public int getNba_team_id() {
+    public String getNba_team_id() {
         return nba_team_id;
     }
 
-    public void setNba_team_id(int nba_team_id) {
+    public void setNba_team_id(String nba_team_id) {
         this.nba_team_id = nba_team_id;
     }
 }
