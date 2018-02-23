@@ -19,6 +19,8 @@ public class HomePageController {
         model.addAttribute("tov_top5", PlayerGeneralStats.getTopItems(PlayerGeneralStats.class, "tov", 5, true));
         model.addAttribute("team_pts_top5", TeamGeneralStats.getTopItems(TeamGeneralStats.class, "pts", 5, true));
         model.addAttribute("team_ast_top5", TeamGeneralStats.getTopItems(TeamGeneralStats.class, "ast", 5, true));
+        model.addAttribute("team_reb_top5", TeamGeneralStats.getTopItems(TeamGeneralStats.class, "reb", 5, true));
+        model.addAttribute("team_stl_top5", TeamGeneralStats.getTopItems(TeamGeneralStats.class, "ast", 5, true));
         return "home";
     }
 }
