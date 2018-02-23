@@ -18,6 +18,7 @@ public class HomePageController {
         model.addAttribute("stl_top5", PlayerGeneralStats.getTopItems(PlayerGeneralStats.class, "stl", 5));
         model.addAttribute("blk_top5", PlayerGeneralStats.getTopItems(PlayerGeneralStats.class, "blk", 5));
         model.addAttribute("tov_top5", PlayerGeneralStats.getTopItems(PlayerGeneralStats.class, "tov", 5));
+        System.out.println(Team.getByID(1).getFull_name());
         model.addAttribute("teams", Team.getByID(1));
         return "home";
     }

@@ -79,7 +79,6 @@ public class Team extends DomainObject<Team> implements Serializable {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "team_id")
     private Long team_id;
 
     private String city;
@@ -96,20 +95,92 @@ public class Team extends DomainObject<Team> implements Serializable {
 
     //getters and setters for columns
 
+
     public Long getId() {
-        return Long.valueOf(team_id);
+        return team_id;
     }
 
-    public void setId(Long id) {
-        this.team_id = id;
+    public void setTeam_id(Long team_id) {
+        this.team_id = team_id;
     }
 
-    public String getName() {
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getAlt_city() {
+        return alt_city;
+    }
+
+    public void setAlt_city(String alt_city) {
+        this.alt_city = alt_city;
+    }
+
+    public String getFull_name() {
         return full_name;
     }
 
-    public void setName(String name) {
-        this.full_name = name;
+    public void setFull_name(String full_name) {
+        this.full_name = full_name;
     }
 
+    public String getAbb() {
+        return abb;
+    }
+
+    public void setAbb(String abb) {
+        this.abb = abb;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getConference() {
+        return conference;
+    }
+
+    public void setConference(String conference) {
+        this.conference = conference;
+    }
+
+    public String getDivision() {
+        return division;
+    }
+
+    public void setDivision(String division) {
+        this.division = division;
+    }
+
+    public int getIs_current_team() {
+        return is_current_team;
+    }
+
+    public void setIs_current_team(int is_current_team) {
+        this.is_current_team = is_current_team;
+    }
+
+    public int getIs_historic_team() {
+        return is_historic_team;
+    }
+
+    public void setIs_historic_team(int is_historic_team) {
+        this.is_historic_team = is_historic_team;
+    }
+
+    public int getNba_team_id() {
+        return nba_team_id;
+    }
+
+    public void setNba_team_id(int nba_team_id) {
+        this.nba_team_id = nba_team_id;
+    }
 }
