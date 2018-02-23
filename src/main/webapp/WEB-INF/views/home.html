@@ -40,7 +40,7 @@
 </head>
 <body>
 <div th:include="templates/header :: toolbar "></div>
-<br />
+<br/>
 <ul class="nav nav-tabs nav-justified" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" data-toggle="tab" href="#players" role="tab"><i class="fa fa-user"></i> Players</a>
@@ -78,7 +78,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col">
                 <div class="card">
                     <div class="card-body text-center">
@@ -105,7 +104,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col">
                 <div class="card">
                     <div class="card-body text-center">
@@ -115,18 +113,14 @@
                             <ul class="list-group list-group-flush">
                                 <div th:if="${playerStat.index} == 0">
                                     <li class="list-group-item leader">
-                                        <div class="playerName" th:if="${playerStat.index} == 0"
-                                             th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
-                                        <div class="value leaderValue" th:if="${playerStat.index} == 0"
-                                             th:text="${player.reb}"></div>
+                                        <div class="playerName" th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
+                                        <div class="value leaderValue" th:text="${player.reb}"></div>
                                     </li>
                                 </div>
                                 <div th:if="${playerStat.index} != 0">
                                     <li class="list-group-item">
-                                        <div class="playerName" th:if="${playerStat.index} != 0"
-                                             th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
-                                        <div class="value" th:if="${playerStat.index} != 0"
-                                             th:text="${player.reb}"></div>
+                                        <div class="playerName" th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
+                                        <div class="value" th:text="${player.reb}"></div>
                                     </li>
                                 </div>
                             </ul>
@@ -134,7 +128,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="col">
                 <div class="card">
                     <div class="card-body text-center">
@@ -144,18 +137,14 @@
                             <ul class="list-group list-group-flush">
                                 <div th:if="${playerStat.index} == 0">
                                     <li class="list-group-item leader">
-                                        <div class="playerName" th:if="${playerStat.index} == 0"
-                                             th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
-                                        <div class="value leaderValue" th:if="${playerStat.index} == 0"
-                                             th:text="${player.stl}"></div>
+                                        <div class="playerName" th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
+                                        <div class="value leaderValue" th:text="${player.stl}"></div>
                                     </li>
                                 </div>
                                 <div th:if="${playerStat.index} != 0">
                                     <li class="list-group-item">
-                                        <div class="playerName" th:if="${playerStat.index} != 0"
-                                             th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
-                                        <div class="value" th:if="${playerStat.index} != 0"
-                                             th:text="${player.stl}"></div>
+                                        <div class="playerName" th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
+                                        <div class="value" th:text="${player.stl}"></div>
                                     </li>
                                 </div>
                             </ul>
@@ -172,18 +161,14 @@
                             <ul class="list-group list-group-flush">
                                 <div th:if="${playerStat.index} == 0">
                                     <li class="list-group-item leader">
-                                        <div class="playerName" th:if="${playerStat.index} == 0"
-                                             th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
-                                        <div class="value leaderValue" th:if="${playerStat.index} == 0"
-                                             th:text="${player.blk}"></div>
+                                        <div class="playerName" th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
+                                        <div class="value leaderValue" th:text="${player.blk}"></div>
                                     </li>
                                 </div>
                                 <div th:if="${playerStat.index} != 0">
                                     <li class="list-group-item">
-                                        <div class="playerName" th:if="${playerStat.index} != 0"
-                                             th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
-                                        <div class="value" th:if="${playerStat.index} != 0"
-                                             th:text="${player.blk}"></div>
+                                        <div class="playerName" th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
+                                        <div class="value" th:text="${player.blk}"></div>
                                     </li>
                                 </div>
                             </ul>
@@ -200,18 +185,14 @@
                             <ul class="list-group list-group-flush">
                                 <div th:if="${playerStat.index} == 0">
                                     <li class="list-group-item leader">
-                                        <div class="playerName" th:if="${playerStat.index} == 0"
-                                             th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
-                                        <div class="value leaderValue" th:if="${playerStat.index} == 0"
-                                             th:text="${player.tov}"></div>
+                                        <div class="playerName" th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
+                                        <div class="value leaderValue" th:text="${player.tov}"></div>
                                     </li>
                                 </div>
                                 <div th:if="${playerStat.index} != 0">
                                     <li class="list-group-item">
-                                        <div class="playerName" th:if="${playerStat.index} != 0"
-                                             th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
-                                        <div class="value" th:if="${playerStat.index} != 0"
-                                             th:text="${player.tov}"></div>
+                                        <div class="playerName" th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
+                                        <div class="value" th:text="${player.tov}"></div>
                                     </li>
                                 </div>
                             </ul>
@@ -227,7 +208,8 @@
                 <div class="card">
                     <div class="card-body text-center">
                         <h1 class="card-header"> Points (PPG) </h1>
-                        <img th:src="@{${'resources/img/team-logos/' + team_pts_top5[0].team_abb + '.png'}}" class="img-responsive"/>
+                        <img th:src="@{${'resources/img/team-logos/' + team_pts_top5[0].team_abb + '.png'}}"
+                             class="img-responsive"/>
                         <div th:each="teams : ${team_pts_top5}">
                             <ul class="list-group list-group-flush">
                                 <div th:if="${teamsStat.index} == 0">
@@ -266,6 +248,106 @@
                                         <div class="playerName"
                                              th:text="${teams.team_name}"></div>
                                         <div class="value" th:text="${teams.ast}"></div>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h1 class="card-header"> Rebounds (RPG) </h1>
+                        <img th:src="@{${'resources/img/team-logos/' + team_reb_top5[0].team_abb + '.png'}}"/>
+                        <div th:each="teams : ${team_reb_top5}">
+                            <ul class="list-group list-group-flush">
+                                <div th:if="${teamsStat.index} == 0">
+                                    <li class="list-group-item leader">
+                                        <div class="playerName" th:text="${teams.team_name}"></div>
+                                        <div class="value leaderValue" th:text="${teams.reb}"></div>
+                                    </li>
+                                </div>
+                                <div th:if="${teamsStat.index} != 0">
+                                    <li class="list-group-item">
+                                        <div class="playerName"
+                                             th:text="${teams.team_name}"></div>
+                                        <div class="value" th:text="${teams.reb}"></div>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h1 class="card-header"> Steals (SPG) </h1>
+                        <img th:src="@{${'resources/img/team-logos/' + team_stl_top5[0].team_abb + '.png'}}"/>
+                        <div th:each="teams : ${team_stl_top5}">
+                            <ul class="list-group list-group-flush">
+                                <div th:if="${teamsStat.index} == 0">
+                                    <li class="list-group-item leader">
+                                        <div class="playerName" th:text="${teams.team_name}"></div>
+                                        <div class="value leaderValue" th:text="${teams.stl}"></div>
+                                    </li>
+                                </div>
+                                <div th:if="${teamsStat.index} != 0">
+                                    <li class="list-group-item">
+                                        <div class="playerName"
+                                             th:text="${teams.team_name}"></div>
+                                        <div class="value" th:text="${teams.stl}"></div>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h1 class="card-header"> Blocks (BPG) </h1>
+                        <img th:src="@{${'resources/img/team-logos/' + team_blk_top5[0].team_abb + '.png'}}"/>
+                        <div th:each="teams : ${team_blk_top5}">
+                            <ul class="list-group list-group-flush">
+                                <div th:if="${teamsStat.index} == 0">
+                                    <li class="list-group-item leader">
+                                        <div class="playerName" th:text="${teams.team_name}"></div>
+                                        <div class="value leaderValue" th:text="${teams.blk}"></div>
+                                    </li>
+                                </div>
+                                <div th:if="${teamsStat.index} != 0">
+                                    <li class="list-group-item">
+                                        <div class="playerName"
+                                             th:text="${teams.team_name}"></div>
+                                        <div class="value" th:text="${teams.blk}"></div>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h1 class="card-header"> Turnovers (TPG) </h1>
+                        <img th:src="@{${'resources/img/team-logos/' + team_tov_top5[0].team_abb + '.png'}}"/>
+                        <div th:each="teams : ${team_tov_top5}">
+                            <ul class="list-group list-group-flush">
+                                <div th:if="${teamsStat.index} == 0">
+                                    <li class="list-group-item leader">
+                                        <div class="playerName" th:text="${teams.team_name}"></div>
+                                        <div class="value leaderValue" th:text="${teams.tov}"></div>
+                                    </li>
+                                </div>
+                                <div th:if="${teamsStat.index} != 0">
+                                    <li class="list-group-item">
+                                        <div class="playerName"
+                                             th:text="${teams.team_name}"></div>
+                                        <div class="value" th:text="${teams.tov}"></div>
                                     </li>
                                 </div>
                             </ul>
