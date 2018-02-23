@@ -5,11 +5,11 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content="Home page of NBA Data Visuals"/>
+    <meta name="description" content="Player page of NBA Data Visuals"/>
     <meta name="keywords" content="NBA, Basketball, Data, Stats, Analysis"/>
     <meta name="author" content="Grady Stewart, Jeremy Timperio"/>
 
-    <title>Home | NBA Stats</title>
+    <title>Players | NBA Stats</title>
 
     <link rel="shortcut icon" type="image/x-icon"
           href="resources/img/header/Icons-Land-Metro-Raster-Sport-Basketball-Court.ico"/>
@@ -31,12 +31,12 @@
             <div class="card-body">
                 <h1 class="card-header"> Points (PPG) </h1>
                 <img src="" id="ptsImage"/>
-                <div th:each="player : ${points_top5}">
+                <div th:each="player : ${pts_top10}">
                     <ul class="list-group list-group-flush">
                         <div th:if="${playerStat.index} == 0">
                             <li class="list-group-item leader">
                                 <div class="playerName" th:text="${player.player_name} + ' ' + ${player.team_ab}"></div>
-                                <div class="value leaderValue" th:text="${player.pts}"></div>
+                                <div class="value" th:text="${player.pts}"></div>
                             </li>
                         </div>
                         <div th:if="${playerStat.index} != 0">
@@ -56,12 +56,12 @@
             <div class="card-body text-center">
                 <h1 class="card-header"> Assists (APG) </h1>
                 <img src="" id="astImage"/>
-                <div th:each="player : ${ast_top5}">
+                <div th:each="player : ${ast_top10}">
                     <ul class="list-group list-group-flush">
                         <div th:if="${playerStat.index} == 0">
                             <li class="list-group-item leader">
                                 <div class="playerName" th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
-                                <div class="value leaderValue" th:text="${player.ast}"></div>
+                                <div class="value" th:text="${player.ast}"></div>
                             </li>
                         </div>
                         <div th:if="${playerStat.index} != 0">
@@ -81,13 +81,13 @@
             <div class="card-body text-center">
                 <h1 class="card-header"> Rebounds (RPG) </h1>
                 <img src="" id="rebImage"/>
-                <div th:each="player : ${reb_top5}">
+                <div th:each="player : ${reb_top10}">
                     <ul class="list-group list-group-flush">
                         <div th:if="${playerStat.index} == 0">
                             <li class="list-group-item leader">
                                 <div class="playerName" th:if="${playerStat.index} == 0"
                                      th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
-                                <div class="value leaderValue" th:if="${playerStat.index} == 0" th:text="${player.reb}"></div>
+                                <div class="value" th:if="${playerStat.index} == 0" th:text="${player.reb}"></div>
                             </li>
                         </div>
                         <div th:if="${playerStat.index} != 0">
@@ -108,13 +108,13 @@
             <div class="card-body text-center">
                 <h1 class="card-header"> Steals (SPG) </h1>
                 <img src="" id="stlImage"/>
-                <div th:each="player : ${stl_top5}">
+                <div th:each="player : ${stl_top10}">
                     <ul class="list-group list-group-flush">
                         <div th:if="${playerStat.index} == 0">
                             <li class="list-group-item leader">
                                 <div class="playerName" th:if="${playerStat.index} == 0"
                                      th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
-                                <div class="value leaderValue" th:if="${playerStat.index} == 0" th:text="${player.stl}"></div>
+                                <div class="value" th:if="${playerStat.index} == 0" th:text="${player.stl}"></div>
                             </li>
                         </div>
                         <div th:if="${playerStat.index} != 0">
@@ -134,13 +134,13 @@
             <div class="card-body text-center">
                 <h1 class="card-header"> Blocks (BPG) </h1>
                 <img src="" id="blkImage"/>
-                <div th:each="player : ${blk_top5}">
+                <div th:each="player : ${blk_top10}">
                     <ul class="list-group list-group-flush">
                         <div th:if="${playerStat.index} == 0">
                             <li class="list-group-item leader">
                                 <div class="playerName" th:if="${playerStat.index} == 0"
                                      th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
-                                <div class="value leaderValue" th:if="${playerStat.index} == 0" th:text="${player.blk}"></div>
+                                <div class="value" th:if="${playerStat.index} == 0" th:text="${player.blk}"></div>
                             </li>
                         </div>
                         <div th:if="${playerStat.index} != 0">
@@ -160,13 +160,13 @@
             <div class="card-body text-center">
                 <h1 class="card-header"> Turnovers (TPG) </h1>
                 <img src="" id="tovImage"/>
-                <div th:each="player : ${tov_top5}">
+                <div th:each="player : ${tov_top10}">
                     <ul class="list-group list-group-flush">
                         <div th:if="${playerStat.index} == 0">
                             <li class="list-group-item leader">
                                 <div class="playerName" th:if="${playerStat.index} == 0"
                                      th:text="${player.player_name}  + ' ' + ${player.team_ab}"></div>
-                                <div class="value leaderValue" th:if="${playerStat.index} == 0" th:text="${player.tov}"></div>
+                                <div class="value" th:if="${playerStat.index} == 0" th:text="${player.tov}"></div>
                             </li>
                         </div>
                         <div th:if="${playerStat.index} != 0">
@@ -186,39 +186,39 @@
 </div>
 
 <script th:inline="javascript">
-        /*<![CDATA[*/
-        var baseURl = "https://nba-players.herokuapp.com/players/";
-        /*pts leader picture*/
-        var ptsPlayerName = /*[[${points_top5[0].player_name}]]*/ 'default';
-        var arr = ptsPlayerName.split(' ');
-        var ptsURL = baseURl.concat(arr[1], '/', arr[0]);
-        document.getElementById("ptsImage").src = ptsURL;
-        /*ast leader picture*/
-        var astPlayerName = /*[[${ast_top5[0].player_name}]]*/ 'default';
-        var arr = astPlayerName.split(' ');
-        var astURL = baseURl.concat(arr[1], '/', arr[0]);
-        document.getElementById("astImage").src = astURL;
-        /*reb leader picture*/
-        var rebPlayerName = /*[[${reb_top5[0].player_name}]]*/ 'default';
-        var arr = rebPlayerName.split(' ');
-        var rebURL = baseURl.concat(arr[1], '/', arr[0]);
-        document.getElementById("rebImage").src = rebURL;
-        /*stl leader picture*/
-        var stlPlayerName = /*[[${stl_top5[0].player_name}]]*/ 'default';
-        var arr = stlPlayerName.split(' ');
-        var stlURL = baseURl.concat(arr[1], '/', arr[0]);
-        document.getElementById("stlImage").src = stlURL;
-        /*blk leader picture*/
-        var blkPlayerName = /*[[${blk_top5[0].player_name}]]*/ 'default';
-        var arr = blkPlayerName.split(' ');
-        var blkURL = baseURl.concat(arr[1], '/', arr[0]);
-        document.getElementById("blkImage").src = blkURL;
-        /*tov leader picture*/
-        var tovPlayerName = /*[[${tov_top5[0].player_name}]]*/ 'default';
-        var arr = tovPlayerName.split(' ');
-        var tovURL = baseURl.concat(arr[1], '/', arr[0]);
-        document.getElementById("tovImage").src = tovURL;
-        /*]]>*/
+    /*<![CDATA[*/
+    var baseURl = "https://nba-players.herokuapp.com/players/";
+    /*pts leader picture*/
+    var ptsPlayerName = /*[[${pts_top10[0].player_name}]]*/ 'default';
+    var arr = ptsPlayerName.split(' ');
+    var ptsURL = baseURl.concat(arr[1], '/', arr[0]);
+    document.getElementById("ptsImage").src = ptsURL;
+    /*ast leader picture*/
+    var astPlayerName = /*[[${ast_top10[0].player_name}]]*/ 'default';
+    var arr = astPlayerName.split(' ');
+    var astURL = baseURl.concat(arr[1], '/', arr[0]);
+    document.getElementById("astImage").src = astURL;
+    /*reb leader picture*/
+    var rebPlayerName = /*[[${reb_top10[0].player_name}]]*/ 'default';
+    var arr = rebPlayerName.split(' ');
+    var rebURL = baseURl.concat(arr[1], '/', arr[0]);
+    document.getElementById("rebImage").src = rebURL;
+    /*stl leader picture*/
+    var stlPlayerName = /*[[${stl_top10[0].player_name}]]*/ 'default';
+    var arr = stlPlayerName.split(' ');
+    var stlURL = baseURl.concat(arr[1], '/', arr[0]);
+    document.getElementById("stlImage").src = stlURL;
+    /*blk leader picture*/
+    var blkPlayerName = /*[[${blk_top10[0].player_name}]]*/ 'default';
+    var arr = blkPlayerName.split(' ');
+    var blkURL = baseURl.concat(arr[1], '/', arr[0]);
+    document.getElementById("blkImage").src = blkURL;
+    /*tov leader picture*/
+    var tovPlayerName = /*[[${tov_top10[0].player_name}]]*/ 'default';
+    var arr = tovPlayerName.split(' ');
+    var tovURL = baseURl.concat(arr[1], '/', arr[0]);
+    document.getElementById("tovImage").src = tovURL;
+    /*]]>*/
 </script>
 
 <!-- /container -->
