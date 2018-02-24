@@ -12,3 +12,7 @@
     float: right;
     width: 20%;
 }
+div.imageContainer {
+    width: 400px;
+    margin: auto;
+}
