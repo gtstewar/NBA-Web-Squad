@@ -51,11 +51,14 @@
 </ul>
 <div class="tab-content">
     <div class="tab-pane fade in show active" id="players" role="tabpanel">
+        <br />
+        <h1 align="center">Player Stats</h1>
+        <br />
         <div class="row">
             <div class="col">
                 <div class="card text-center">
                     <div class="card-body">
-                        <h1 class="card-header"> Points (PPG) </h1>
+                        <h1 class="card-header"> Points (PPG)  </h1>
                         <img src="" id="ptsImage"/>
                         <div th:each="player : ${points_top5}">
                             <ul class="list-group list-group-flush">
@@ -211,6 +214,9 @@
         </div>
     </div>
     <div class="tab-pane fade" id="teams" role="tabpanel">
+        <br />
+        <h1 align="center">Team Stats</h1>
+        <br />
         <div class="row">
             <div class="col">
                 <div class="card">
