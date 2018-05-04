@@ -10,5 +10,6 @@
         <mapping class="com.dynamic.duo.model.persistent.PlayerAdvancedStats" />
         <mapping class="com.dynamic.duo.model.persistent.Team" />
         <mapping class="com.dynamic.duo.model.persistent.TeamGeneralStats" />
+        <mapping class="com.dynamic.duo.model.persistent.Twitter" />
     </session-factory>
 </hibernate-configuration>
