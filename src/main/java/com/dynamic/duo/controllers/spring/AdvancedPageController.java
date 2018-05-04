@@ -1,4 +1,4 @@
-package com.dynamic.duo.controllers.home;
+package com.dynamic.duo.controllers.spring;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

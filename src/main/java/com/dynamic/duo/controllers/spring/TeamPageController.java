@@ -1,6 +1,5 @@
-package com.dynamic.duo.controllers.home;
+package com.dynamic.duo.controllers.spring;
 
-import com.dynamic.duo.model.persistent.PlayerGeneralStats;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
