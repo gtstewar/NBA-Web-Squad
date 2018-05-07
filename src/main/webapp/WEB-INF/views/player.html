@@ -21,14 +21,57 @@
     <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}"/>
     <link th:href="@{/resources/css/HomeCards.css}" rel="stylesheet"/>
 
+
+    <style>
+        .player-pic {
+            border-radius: 50%;
+        }
+    </style>
+
 </head>
 <body>
-    <div th:include="templates/header :: toolbar "></div>
-    <div class="playerName" th:text="${generalStats.player_name}"></div>
-    <div class="playerPts" th:text="${generalStats.pts}"></div>
-    <div class="playerAst" th:text="${generalStats.ast}"></div>
-    <div class="playerReb" th:text="${generalStats.reb}"></div>
-    <div class="playerBlk" th:text="${generalStats.blk}"></div>
+<div th:include="templates/header :: toolbar "></div>
+<div class = "container-fluid">
+    <div class = "row">
+        <div class = "col-sm-1"></div>
+        <div class = "col-sm-10">
+            <div class="container-fluid" style = "margin-top: 2%">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <img src = ""  id = "playerImage" class="player-pic"/>
+                    </div>
+                    <div class="col-sm-3">
+                        <p>column 2</p>
+                    </div>
+                    <div class="col-sm-2">
+                        <p>column 3</p>
+                    </div>
+                    <div class="col-sm-2">
+                        <p>column 4</p>
+                    </div>
+                    <div class="col-sm-2">
+                        <p>column 5</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "col-sm-1"></div>
+    </div>
+</div>
+
+<div th:include="templates/footer"></div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var baseURl = "https://nba-players.herokuapp.com/players/";
+    /*pts leader picture*/
+    var playerName = /*[[${player.name}]]*/ 'default';
+    var arr = playerName.split(' ');
+    var playerPicURL = baseURl.concat(arr[1], '/', arr[0]);
+    document.getElementById("playerImage").src = playerPicURL;
+    /*]]>*/
+</script>
+
 
 </body>
 </html>

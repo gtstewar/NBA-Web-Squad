@@ -1,4 +1,4 @@
-package com.dynamic.duo.controllers.spring;
+package com.dynamic.duo.controllers.page;
 
 import com.dynamic.duo.model.persistent.PlayerGeneralStats;
 import org.springframework.stereotype.Controller;
