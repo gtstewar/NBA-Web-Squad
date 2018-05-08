@@ -29,6 +29,26 @@
             border-color: #222222;
             padding-top: 2%
         }
+         .dot {
+             height: 100px;
+             width: 100px;
+             background-color: darkred;
+             border-radius: 50%;
+             display: inline-block;
+         }
+        span.dot:hover{
+            background-color: red;
+        }
+        p.dot-title{
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        p.dot-number{
+            color: white;
+
+            font-size: 40px;
+        }
     </style>
 
 </head>
@@ -44,16 +64,21 @@
                         <img src = ""  id = "playerImage" class="rounded-circle player-pic" style = "background-color: #ffffff"/>
                     </div>
                     <div class="col-sm-3" style = "background-color: aqua">
-                        <p>player info</p>
+                        <p th:text="${generalStats.player_name}"></p>
+                        <p th:text="'Age: ' + ${generalStats.age}"></p>
+                        <img th:src="@{${'resources/img/team-logos/' + advancedStats.team_ab + '.png'}}"/>
                     </div>
-                    <div class="col-sm-2" style = "background-color: #761c19">
-                        <p>points</p>
+                    <div style="text-align:center" class="col-sm-2">
+                            <span class="dot">
+                                <p class="dot-title">PPG</p>
+                                <p class="dot-number" th:text="${generalStats.pts}"></p>
+                            </span>
                     </div>
                     <div class="col-sm-2" style = "background-color: #2b542c">
-                        <p>reb</p>
+                        <p th:text="${generalStats.ast}"></p>
                     </div>
                     <div class="col-sm-2" style = "background-color: #8a6d3b">
-                        <p>ast</p>
+                        <p th:text="${generalStats.reb}"></p>
                     </div>
                 </div>
             </div>
