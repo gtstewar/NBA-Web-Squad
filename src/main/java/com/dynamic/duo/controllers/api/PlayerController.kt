@@ -2,6 +2,7 @@ package com.dynamic.duo.controllers.api
 
 import com.dynamic.duo.model.persistent.DomainObject
 import com.dynamic.duo.model.persistent.Player
+import com.dynamic.duo.model.persistent.PlayerGeneralStats
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -25,9 +26,9 @@ class PlayerController {
     @CrossOrigin(origins = ["http://localhost:4200"])
     @GetMapping("api/players/top/{attribute}/{number}")
     fun getTopPlayersByAttribute(@PathVariable("attribute") attribute: String, @PathVariable("number") numOfPlayers: Int): ResponseEntity<String> {
-        val players: Array<Player?>? = DomainObject.getTopItems(Player::class.java, attribute, numOfPlayers, true ) as Array<Player?>? ?: return ResponseEntity(HttpStatus.NOT_FOUND)
+        val playerGeneralStats: Array<PlayerGeneralStats?>? = DomainObject.getTopItems(PlayerGeneralStats::class.java, attribute, numOfPlayers, true ) as Array<PlayerGeneralStats?>? ?: return ResponseEntity(HttpStatus.NOT_FOUND)
         val gson = GsonBuilder().setPrettyPrinting().create()
-        val jsonPlayers: String = gson.toJson(players)
-        return ResponseEntity(jsonPlayers, HttpStatus.OK)
+        val jsonPlayerGeneralStats: String = gson.toJson(playerGeneralStats)
+        return ResponseEntity(jsonPlayerGeneralStats, HttpStatus.OK)
     }
 }
