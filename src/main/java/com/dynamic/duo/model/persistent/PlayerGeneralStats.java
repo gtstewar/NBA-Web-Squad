@@ -16,6 +16,30 @@ public class PlayerGeneralStats extends DomainObject<PlayerGeneralStats> impleme
     /**cache of playerGeneralStats objects*/
     static private DomainObjectCache<Long, PlayerGeneralStats> cache = new DomainObjectCache<>( PlayerGeneralStats.class );
 
+    /**
+     * gets top x results sorted by a column that is passed in from a given table
+     * @param table - table to be selected from
+     * @param col - column to sort by
+     * @param max - number of items to be returned
+     * @return rows - List of Persistent Objects to be returned
+     */
+    public static List<? extends DomainObject> getTopItems(String col, int max, boolean desc) {
+        final Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        String query;
+        if(desc) {
+            query = "FROM PlayerGeneralStats WHERE gp > 40 " + " ORDER BY " + col + " DESC";
+        } else {
+            //whole query
+            query = "FROM PlayerGeneralStats WHERE gp > 40 " + " ORDER BY " + col + " ASC";
+        }
+        //create HQL query in session after retrieving from sessionFactory
+        List<? extends DomainObject> rows = session.createQuery(query).setMaxResults(max).list();
+        session.getTransaction().commit();
+        session.close();
+        return rows;
+    }
+
     public static PlayerGeneralStats getByID(Long id){
         PlayerGeneralStats stats = cache.get(id);
         if(stats == null) {

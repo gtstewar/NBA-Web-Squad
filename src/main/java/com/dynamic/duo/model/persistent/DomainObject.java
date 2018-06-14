@@ -91,6 +91,25 @@ public abstract class DomainObject<D extends DomainObject<D>> {
     }
 
     /**
+     * gets top x results sorted by a column that is passed in from a given table
+     * @param table - table to be selected from
+     * @param col - column to sort by
+     * @param max - number of items to be returned
+     * @return rows - List of Persistent Objects to be returned
+     */
+    public static List<? extends DomainObject> getAllItems(final Class table) {
+        final Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        String query;
+        query = "FROM " + table.getSimpleName();
+        //create HQL query in session after retrieving from sessionFactory
+        List<? extends DomainObject> rows = session.createQuery(query).list();
+        session.getTransaction().commit();
+        session.close();
+        return rows;
+    }
+
+    /**
      * Provides the ability to quickly delete all instances of the current
      * class. Useful for clearing out data for testing or regeneration.
      * Visibility is set to protected to force subclasses of DomainObject to
