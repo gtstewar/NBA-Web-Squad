@@ -6,13 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="hello" />
-        <module name="nbadatavisuals" />
+        <module name="nba-data-visuals" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="hello" target="1.8" />
-      <module name="nbadatavisuals" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
